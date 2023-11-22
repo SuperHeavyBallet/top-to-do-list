@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { makeNavBar } from './makeNavBar';
 import { ToDoElement } from './makeToDoElement';
+import { makeUserInputElement } from './makeUserInputElement';
 
 //Test stuff
   console.log('Hello?');
@@ -20,6 +21,11 @@ import { ToDoElement } from './makeToDoElement';
 
 
   makeNavBar();
+  makeUserInputElement();
+
+
+
+
 
     //Create input function
   //Tie input to create newToDo parameters
