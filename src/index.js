@@ -3,17 +3,9 @@ import { makeNavBar } from './makeNavBar';
 import { ToDoElement } from './makeToDoElement';
 import { makeUserInputElement } from './makeUserInputElement';
 
-//Test stuff
+
   console.log('Hello?');
 
-
-
-  const newToDo = ToDoElement('Brian', 'Wash The Car', '13/11/1990', 'High', 'Use Shampoo', 6);
-  const newToDo1 = ToDoElement('Bob', 'Wash The Baby', 'Whenever', 'Low', 'Meh', 6);
-  
-  console.log(newToDo);
-  console.log(newToDo1);
-///
 
 
 
@@ -22,6 +14,49 @@ import { makeUserInputElement } from './makeUserInputElement';
 
   makeNavBar();
   makeUserInputElement();
+
+  const toDoNameInput = document.querySelector('#todo-name');
+  toDoNameInput.addEventListener('input', function(event) {
+    console.log('Name: ', event.target.value);
+  });
+
+  const toDoDetailsInput = document.querySelector('#todo-details');
+  toDoDetailsInput.addEventListener('input', function(event) {
+    console.log('Details: ', event.target.value);
+  });
+
+  const toDoDueDateInput = document.querySelector('#todo-due-date');
+  toDoDueDateInput.addEventListener('input', function(event){
+    console.log('Due Date: ', event.target.value);
+  });
+
+  const toDoNotesInput = document.querySelector("#todo-notes");
+  toDoNotesInput.addEventListener('input', function(event) {
+    console.log('Notes: ', event.target.value);
+  });
+
+  const toDoPriorityInput = document.querySelectorAll('input[name="todo-priority"]');
+  toDoPriorityInput.forEach(function (radioInput){
+    radioInput.addEventListener('change', function(event){
+
+        const selectedPriority = document.querySelector('input[name="todo-priority"]:checked');
+        if (selectedPriority){
+            console.log("Priority: ", selectedPriority.value);
+        }
+    });
+  });
+
+  const toDoCompletedInput = document.querySelectorAll('input[name="todo-completed"]');
+  toDoCompletedInput.forEach(function (radioInput){
+    radioInput.addEventListener('change', function(event){
+        const selectedCompleted = document.querySelector('input[name="todo-completed"]:checked');
+        if (selectedCompleted){
+            console.log("Completed: ", selectedCompleted.value);
+        }
+    })
+  })
+
+
 
 
 
