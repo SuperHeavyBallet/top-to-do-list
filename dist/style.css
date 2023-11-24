@@ -57,7 +57,22 @@
     height: 80vh;
 }
 
+.todo-card-container{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.completed{
+    width: 20vw;
+}
+
+.not-completed{
+    width: 20vw;
+}
+
 .new-todo-card{
     border: 1px solid black;
     background-color: gray;
+    min-height: 10vh;
 }

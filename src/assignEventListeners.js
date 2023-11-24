@@ -74,6 +74,7 @@ export function assignEventListeners(){
             toDoCompletedInputValue
         );
 
+            toDoNameInput.value = '';
 
     });
 

@@ -17,23 +17,22 @@ export function makeUserInputElement(){
     function createForm()
     {
         const form = document.createElement('form');
-        //form.setAttribute('action', '#');
-        //form.setAttribute('method', 'post');
 
         //Creates The text input elements
-        form.appendChild(createLabelInputPair('To Do:', 'todo-name', 'todo-name', 'text', ''));
+        const nameInput = (createLabelInputPair('To Do:', 'todo-name', 'todo-name', 'text', ''));
+        form.appendChild(nameInput);
+
         const detailsInput = (createLabelInputPair('Details:', 'todo-details', 'todo-details', 'text', ''));
         detailsInput.classList.add('box-input');
         form.appendChild(detailsInput);
+
         form.appendChild(createLabelInputPair('Due Date:', 'todo-due-date', 'todo-due-date', 'date', ''));
+        
         const notesInput = (createLabelInputPair('Notes:', 'todo-notes', 'todo-notes', 'text', ''));
         notesInput.classList.add('box-input');
         form.appendChild(notesInput);
         
-        
-
-     
-
+    
         //Creates the Radio Input elements, the function takes parameters of:
         //Text Description, Number of Radio Options, Text Content, Id, Name, Type
         const priorityContainer = createRadioContainer('Priority:', 3, [

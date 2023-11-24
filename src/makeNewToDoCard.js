@@ -28,7 +28,18 @@ export function makeNewToDoCard(name, details, dueDate, notes, priority, complet
     const newToDoCardCompleted = document.createElement('h3');
     newToDoCardCompleted.textContent = completed;
     newToDoCard.appendChild(newToDoCardCompleted);
-    
-    toDoCardContainer.appendChild(newToDoCard);
+
+    const completedCategory = document.querySelector('.completed');
+    const notCompletedCategory = document.querySelector('.not-completed');
+
+    if (completed === 'yes')
+    {
+        completedCategory.appendChild(newToDoCard);
+    }
+    else
+    {
+        notCompletedCategory.appendChild(newToDoCard);
+    }
+
 
 }
