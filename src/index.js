@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import { makeNavBar } from './makeNavBar';
-import { ToDoElement } from './makeToDoElement';
+import { makeToDoContainer } from './makeToDoContainer';
 import { makeUserInputElement } from './makeUserInputElement';
+import { assignEventListeners } from './assignEventListeners';
+import { makeToDoCardContainer } from './makeToDoCardContainer';
+
 
 
   console.log('Hello?');
@@ -12,50 +15,21 @@ import { makeUserInputElement } from './makeUserInputElement';
 
 
 
-  makeNavBar();
-  makeUserInputElement();
+    makeNavBar();
 
-  const toDoNameInput = document.querySelector('#todo-name');
-  toDoNameInput.addEventListener('input', function(event) {
-    console.log('Name: ', event.target.value);
-  });
+    makeToDoContainer();
+    
 
-  const toDoDetailsInput = document.querySelector('#todo-details');
-  toDoDetailsInput.addEventListener('input', function(event) {
-    console.log('Details: ', event.target.value);
-  });
+    makeUserInputElement();
+    
 
-  const toDoDueDateInput = document.querySelector('#todo-due-date');
-  toDoDueDateInput.addEventListener('input', function(event){
-    console.log('Due Date: ', event.target.value);
-  });
+    assignEventListeners();
 
-  const toDoNotesInput = document.querySelector("#todo-notes");
-  toDoNotesInput.addEventListener('input', function(event) {
-    console.log('Notes: ', event.target.value);
-  });
+    makeToDoCardContainer();
 
-  const toDoPriorityInput = document.querySelectorAll('input[name="todo-priority"]');
-  toDoPriorityInput.forEach(function (radioInput){
-    radioInput.addEventListener('change', function(event){
 
-        const selectedPriority = document.querySelector('input[name="todo-priority"]:checked');
-        if (selectedPriority){
-            console.log("Priority: ", selectedPriority.value);
-        }
-    });
-  });
 
-  const toDoCompletedInput = document.querySelectorAll('input[name="todo-completed"]');
-  toDoCompletedInput.forEach(function (radioInput){
-    radioInput.addEventListener('change', function(event){
-        const selectedCompleted = document.querySelector('input[name="todo-completed"]:checked');
-        if (selectedCompleted){
-            console.log("Completed: ", selectedCompleted.value);
-        }
-    })
-  })
-
+  
 
 
 

@@ -2,11 +2,11 @@ export function makeUserInputElement(){
 
     
 
-    const documentBody = document.querySelector('body');
+    const toDoContainer = document.querySelector('.todo-container');
 
     const userInput = document.createElement('div');
     userInput.classList.add('user-input');
-    documentBody.appendChild(userInput);
+    toDoContainer.appendChild(userInput);
 
 
     const toDoForm = createForm();
@@ -17,14 +17,22 @@ export function makeUserInputElement(){
     function createForm()
     {
         const form = document.createElement('form');
-        form.setAttribute('action', '#');
-        form.setAttribute('method', 'post');
+        //form.setAttribute('action', '#');
+        //form.setAttribute('method', 'post');
 
         //Creates The text input elements
         form.appendChild(createLabelInputPair('To Do:', 'todo-name', 'todo-name', 'text', ''));
-        form.appendChild(createLabelInputPair('Details:', 'todo-details', 'todo-details', 'text', ''));
+        const detailsInput = (createLabelInputPair('Details:', 'todo-details', 'todo-details', 'text', ''));
+        detailsInput.classList.add('box-input');
+        form.appendChild(detailsInput);
         form.appendChild(createLabelInputPair('Due Date:', 'todo-due-date', 'todo-due-date', 'date', ''));
-        form.appendChild(createLabelInputPair('Notes:', 'todo-notes', 'todo-notes', 'text', ''));
+        const notesInput = (createLabelInputPair('Notes:', 'todo-notes', 'todo-notes', 'text', ''));
+        notesInput.classList.add('box-input');
+        form.appendChild(notesInput);
+        
+        
+
+     
 
         //Creates the Radio Input elements, the function takes parameters of:
         //Text Description, Number of Radio Options, Text Content, Id, Name, Type
@@ -44,9 +52,11 @@ export function makeUserInputElement(){
         form.appendChild(completedContainer);
 
         //Creates the final submit button for this form
-        const submitButton = document.createElement('input');
-        submitButton.setAttribute('type', 'submit');
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
         submitButton.setAttribute('value', 'Create New To Do');
+        submitButton.textContent = "Submit New To Do";
+        submitButton.setAttribute('id', 'submit-new-todo');
         form.appendChild(submitButton);
 
 

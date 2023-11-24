@@ -12,3 +12,52 @@
     justify-content: center;
     padding: 1vh 1vw;
 }
+
+.body{
+    display: flex;
+    flex-direction: row;
+}
+.user-input{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    
+    border: 1px solid black;
+    padding: 2vh 1vw;
+    align-items: center;
+}
+
+.user-input > form{
+    width: 80%;
+}
+
+.user-input > form > button{
+    margin-left: 30%;
+    padding: 1vh;
+
+}
+
+.user-input > form > div{
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.box-input > input{
+
+    height: 5vh;
+
+}
+
+.todo-container{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    height: 80vh;
+}
+
+.new-todo-card{
+    border: 1px solid black;
+    background-color: gray;
+}
