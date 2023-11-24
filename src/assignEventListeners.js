@@ -5,10 +5,14 @@ export function assignEventListeners(){
 
     let toDoNameInputValue;
     let toDoDetailsInputValue;
-    let toDoNameDueDateValue;
+    let toDoDueDateValue;
     let toDoNotesInputValue;
     let toDoPriorityInputValue;
     let toDoCompletedInputValue;
+
+    clearInputFields();
+
+
     
 
 
@@ -27,7 +31,7 @@ export function assignEventListeners(){
     const toDoDueDateInput = document.querySelector('#todo-due-date');
     toDoDueDateInput.addEventListener('input', function(event){
 
-        toDoNameDueDateValue = event.target.value;
+        toDoDueDateValue = event.target.value;
     });
 
     const toDoNotesInput = document.querySelector("#todo-notes");
@@ -65,17 +69,54 @@ export function assignEventListeners(){
     submitButton.addEventListener('click', () => {
 
         
+
+        if (toDoNameInputValue != undefined && toDoCompletedInputValue != undefined)
+        {
         makeNewToDoCard(
             toDoNameInputValue,
             toDoDetailsInputValue,
-            toDoNameDueDateValue,
+            toDoDueDateValue,
             toDoNotesInputValue,
             toDoPriorityInputValue,
             toDoCompletedInputValue
         );
 
-            toDoNameInput.value = '';
+        clearInputFields();
+
+
+        }
+        else{
+            console.log("Empty");
+        }
+
+        
+        
+
+        
 
     });
+
+    function clearInputFields()
+    {
+        //Reset Input Field Values
+        const form = document.querySelector('form');
+        form.reset();
+
+        toDoNameInputValue = undefined;
+        toDoDetailsInputValue = undefined;
+        toDoDueDateValue = undefined;
+        toDoNotesInputValue = undefined;
+        toDoPriorityInputValue = undefined;
+        toDoCompletedInputValue = undefined;
+
+        /*console.log(
+            toDoNameInputValue,
+            toDoDetailsInputValue,
+            toDoDueDateValue,
+            toDoNotesInputValue,
+            toDoPriorityInputValue,
+            toDoCompletedInputValue
+        );*/
+    }
 
 }

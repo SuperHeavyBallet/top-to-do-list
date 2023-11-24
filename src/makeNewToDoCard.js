@@ -1,3 +1,5 @@
+import { sortByPriority } from "./sortByPriority";
+
 export function makeNewToDoCard(name, details, dueDate, notes, priority, completed){
 
     const toDoCardContainer = document.querySelector('.todo-card-container');
@@ -29,17 +31,34 @@ export function makeNewToDoCard(name, details, dueDate, notes, priority, complet
     newToDoCardCompleted.textContent = completed;
     newToDoCard.appendChild(newToDoCardCompleted);
 
+    if (priority === 'high')
+    {
+        newToDoCard.classList.add('priority-high');
+    }
+    else if (priority === 'low')
+    {
+        newToDoCard.classList.add('priority-low');
+    }
+    else
+    {
+        newToDoCard.classList.add('priority-medium');
+    }
+
     const completedCategory = document.querySelector('.completed');
     const notCompletedCategory = document.querySelector('.not-completed');
 
     if (completed === 'yes')
     {
+        newToDoCard.classList.add('todo-completed');
         completedCategory.appendChild(newToDoCard);
     }
     else
     {
+        newToDoCard.classList.add('todo-not-completed');
         notCompletedCategory.appendChild(newToDoCard);
     }
+
+    sortByPriority();
 
 
 }

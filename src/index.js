@@ -7,7 +7,6 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
-  console.log('Hello?');
 
 
 
@@ -36,9 +35,9 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
-    //Create input function
-  //Tie input to create newToDo parameters
+ // Make To Do/Completed mandatory
+ // Completed = Green
+ // Not Completed = Red
 
-  //Each new ToDo element will source the object properties from user input
-  //Then the properties of that object will make up the text content of each element in the DOM
-
+ // algorithm to sort by priority
+ // use text content of each card to build priority map
