@@ -1,80 +1,107 @@
 export function sortByPriority(){
 
+    // Initial DOM elements assigning
     const completedToDoCategory = document.querySelector('.completed');
     const notCompletedToDoCategory = document.querySelector('.not-completed');
 
-    const completedNodeList = document.querySelectorAll('.todo-completed');
-    let completedArray = Array.from(completedNodeList);
-    const compLowPriorityArray = [];
-    const compMediumPriorityArray = [];
-    const compHighPriorityArray = [];
+    // Creating Arrays from the completed and not completed DOM elements
+    const completedArray = Array.from(document.querySelectorAll('.todo-completed'));
+    const notCompletedArray = Array.from(document.querySelectorAll('.todo-not-completed'));
 
-    const notCompletedNodeList = document.querySelectorAll('.todo-not-completed');
-    let notCompletedArray = Array.from(notCompletedNodeList);
-    const notCompLowPriorityArray = [];
-    const notCompMediumPriorityArray = [];
-    const notCompHighPriorityArray = [];
+    // Assigning pre-final merged and ordered arrays
+    const mergedOrderedCompleteArray = sortingPriorityAndDate(completedArray);
+    const mergedOrderedNotCompleteArray = sortingPriorityAndDate(notCompletedArray);
 
 
 
-    //Sort Completed into Priority Arrays
-    for (let i = 0; i < completedArray.length; i++)
+    //Finally re-append the newly sorted to-do cards to the DOM, updating based on order
+    mergedOrderedCompleteArray.forEach(item => completedToDoCategory.appendChild(item));
+    mergedOrderedNotCompleteArray.forEach(item => notCompletedToDoCategory.appendChild(item));
+
+
+
+    function sortingPriorityAndDate(inputArray)
     {
-        if (completedArray[i].classList.contains('priority-high'))
+
+        // Create temporary Arrays for each priority
+        const tempHighPriorityArray = [];
+        const tempMedPriorityArray = [];
+        const tempLowPriorityArray = [];
+
+        // Check if each element in the input array (Existing to-do cards in the DOM)
+        // contain a priority of HIGH or LOW, if not sort as MEDIUM
+        for (let i = 0; i <inputArray.length; i++)
         {
-            compHighPriorityArray.push(completedArray[i]);
+            if (inputArray[i].classList.contains('priority-high'))
+            {
+                tempHighPriorityArray.push(inputArray[i]);
+            }
+            else if (inputArray[i].classList.contains('priority-low'))
+            {
+                tempLowPriorityArray.push(inputArray[i]);
+            }
+            else
+            {
+                tempMedPriorityArray.push(inputArray[i]);
+            }
+
+            //Grab the DUE DATE from the DOM element's child node(Date assigned in input)
+            const dueDate  = inputArray[i].childNodes[2].textContent;
+        
+            // Check if valid DUE DATE is provided by the user
+            if (dueDate.trim() !== '')
+            {
+                const dateObject = new Date(dueDate);
+
+                if (!isNaN(dateObject))
+                {
+                    //Handle valid date
+                    inputArray[i].dateObject = dateObject;
+                }
+                else{
+                    //Handle invalid date
+                    console.error('Invalid date for item');
+                }
+            }
+            else
+            {
+                // No due date provided
+                inputArray[i].dateObject = null;
+            }
         }
-        else if (completedArray[i].classList.contains('priority-low'))
-        {
-            compLowPriorityArray.push(completedArray[i]);
-        }
-        else {
-            compMediumPriorityArray.push(completedArray[i]);
-        }
+
+        // Sort each of the Priority Arrays By Date
+        tempHighPriorityArray.sort((a,b) => sortByDate(a,b));
+        tempMedPriorityArray.sort((a,b) => sortByDate(a,b));
+        tempLowPriorityArray.sort((a,b) => sortByDate(a,b));
+
+        // Return a merged array of the fully sorted 3 arrays
+        return [...tempHighPriorityArray, ...tempMedPriorityArray, ...tempLowPriorityArray];
+
     }
 
-    const mergedOrderedCompleteArray = [...compHighPriorityArray, ...compMediumPriorityArray, ...compLowPriorityArray];
-    console.log(mergedOrderedCompleteArray);
+    // Function to sort by Date
+    function sortByDate(a,b){
 
-    //Sort Completed into Priority Arrays
-    for (let i = 0; i < notCompletedArray.length; i++)
-    {
-        if (notCompletedArray[i].classList.contains('priority-high'))
+        //Handle INVALID date entry
+        if (a.dateObject === null && b.dateObject === null)
         {
-            notCompHighPriorityArray.push(notCompletedArray[i]);
+            return 0;
         }
-        else if (notCompletedArray[i].classList.contains('priority-low'))
+        
+        if (a.dateObject === null)
         {
-            notCompLowPriorityArray.push(notCompletedArray[i]);
+            return 1;
         }
-        else {
-            notCompMediumPriorityArray.push(notCompletedArray[i]);
+
+        if (b.dateObject === null)
+        {
+            return -1;
         }
+
+        //Handle VALID date entry
+        return a.dateObject - b.dateObject;
     }
-
-    const mergedOrderedNotCompleteArray = [...notCompHighPriorityArray, ...notCompMediumPriorityArray, ...notCompLowPriorityArray];
-    console.log(mergedOrderedNotCompleteArray);
-
-    for (let i = 0; i <mergedOrderedCompleteArray.length; i++)
-    {
-        completedToDoCategory.appendChild(mergedOrderedCompleteArray[i]);
-    }
-    
-    for (let i = 0; i < mergedOrderedNotCompleteArray.length; i++)
-    {
-        notCompletedToDoCategory.appendChild(mergedOrderedNotCompleteArray[i]);
-    }
-    
-
-
-
-
-
-
-    
-
-    
-    
 
 
 

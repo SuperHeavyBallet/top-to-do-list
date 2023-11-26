@@ -36,8 +36,8 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
  // Make To Do/Completed mandatory
- // Completed = Green
- // Not Completed = Red
 
- // algorithm to sort by priority
- // use text content of each card to build priority map
+
+ // if no due date supplied, add text content 'No Due Date'
+ // add completed/not completed checkbox
+ // edit card?
