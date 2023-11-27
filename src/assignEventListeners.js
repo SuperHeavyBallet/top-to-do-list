@@ -72,21 +72,19 @@ export function assignEventListeners(){
 
         if (toDoNameInputValue != undefined && toDoCompletedInputValue != undefined)
         {
-        makeNewToDoCard(
-            toDoNameInputValue,
-            toDoDetailsInputValue,
-            toDoDueDateValue,
-            toDoNotesInputValue,
-            toDoPriorityInputValue,
-            toDoCompletedInputValue
-        );
+            makeNewToDoCard(
+                toDoNameInputValue,
+                toDoDetailsInputValue,
+                toDoDueDateValue,
+                toDoNotesInputValue,
+                toDoPriorityInputValue,
+                toDoCompletedInputValue
+            );
 
-        clearInputFields();
-
-
+            clearInputFields();
         }
         else{
-            console.log("Empty");
+            alert("Please fill out the \"ToDo\" and \"Completed\" Fields");
         }
 
         
@@ -109,14 +107,6 @@ export function assignEventListeners(){
         toDoPriorityInputValue = undefined;
         toDoCompletedInputValue = undefined;
 
-        /*console.log(
-            toDoNameInputValue,
-            toDoDetailsInputValue,
-            toDoDueDateValue,
-            toDoNotesInputValue,
-            toDoPriorityInputValue,
-            toDoCompletedInputValue
-        );*/
     }
 
 }

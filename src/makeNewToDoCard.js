@@ -3,6 +3,7 @@ import { sortByPriority } from "./sortByPriority";
 export function makeNewToDoCard(name, details, dueDate, notes, priority, completed){
 
     const toDoCardContainer = document.querySelector('.todo-card-container');
+    
 
     const newToDoCard = document.createElement('div');
     newToDoCard.classList.add('new-todo-card');
@@ -30,6 +31,16 @@ export function makeNewToDoCard(name, details, dueDate, notes, priority, complet
     const newToDoCardCompleted = document.createElement('h3');
     newToDoCardCompleted.textContent = completed;
     newToDoCard.appendChild(newToDoCardCompleted);
+
+    const cardItemsAsArray = [newToDoCardTitle, newToDoCardDetails, newToDoCardDueDate, newToDoCardNotes, newToDoCardPriority, newToDoCardCompleted];
+    for (let i = 0; i < cardItemsAsArray.length; i++)
+    {
+        if (cardItemsAsArray[i].textContent === '')
+        {
+            cardItemsAsArray[i].classList.add('no-display');
+        }
+
+    }
 
     if (priority === 'high')
     {

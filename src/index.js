@@ -35,9 +35,11 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
- // Make To Do/Completed mandatory
 
 
- // if no due date supplied, add text content 'No Due Date'
+// add div container for each card item
+//inside container place item description, eg: 'Due:' * item data
+//fix the code that breaks from this
+
  // add completed/not completed checkbox
  // edit card?
