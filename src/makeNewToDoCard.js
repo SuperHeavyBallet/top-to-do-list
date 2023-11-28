@@ -25,7 +25,19 @@ export function makeNewToDoCard(name, details, dueDate, notes, priority, complet
     newToDoCard.appendChild(newToDoCardNotes);
 
     const newToDoCardPriority = document.createElement('h3');
-    newToDoCardPriority.textContent = priority;
+    console.log(priority);
+
+    if (priority === undefined)
+    {
+        newToDoCardPriority.textContent = 'Medium';
+    }
+    else
+    {
+        newToDoCardPriority.textContent = priority;
+    }
+        
+
+    
     newToDoCard.appendChild(newToDoCardPriority);
 
     const newToDoCardCompleted = document.createElement('h3');

@@ -22,13 +22,13 @@ export function makeUserInputElement(){
         const nameInput = (createLabelInputPair('To Do:', 'todo-name', 'todo-name', 'text', ''));
         form.appendChild(nameInput);
 
-        const detailsInput = (createLabelInputPair('Details:', 'todo-details', 'todo-details', 'text', ''));
+        const detailsInput = (createLabelTextAreaPair('Details:', 'todo-details', 'todo-details', ''));
         detailsInput.classList.add('box-input');
         form.appendChild(detailsInput);
 
         form.appendChild(createLabelInputPair('Due Date:', 'todo-due-date', 'todo-due-date', 'date', ''));
         
-        const notesInput = (createLabelInputPair('Notes:', 'todo-notes', 'todo-notes', 'text', ''));
+        const notesInput = (createLabelTextAreaPair('Notes:', 'todo-notes', 'todo-notes', ''));
         notesInput.classList.add('box-input');
         form.appendChild(notesInput);
         
@@ -37,9 +37,9 @@ export function makeUserInputElement(){
         //Text Description, Number of Radio Options, Text Content, Id, Name, Type
         const priorityContainer = createRadioContainer('Priority:', 3, [
 
-            ['High', 'todo-priority-high', 'todo-priority', 'radio', 'high'],
-            ['Medium', 'todo-priority-medium', 'todo-priority', 'radio', 'medium'],
-            ['Low', 'todo-priority-low', 'todo-priority', 'radio', 'low']
+            ['High', 'todo-priority-high', 'todo-priority', 'radio', 'High'],
+            ['Medium', 'todo-priority-medium', 'todo-priority', 'radio', 'Medium'],
+            ['Low', 'todo-priority-low', 'todo-priority', 'radio', 'Low']
         ]);
         form.appendChild(priorityContainer);
 
@@ -65,11 +65,13 @@ export function makeUserInputElement(){
 
     function createLabelInputPair(labelText, inputId, inputName, inputType, inputValue)
     {
+        
         const container = document.createElement('div');
 
         const label = document.createElement('label');
         label.setAttribute('for', inputId);
         label.textContent = (labelText);
+
 
         const input = document.createElement('input');
         input.setAttribute('type', inputType);
@@ -81,6 +83,26 @@ export function makeUserInputElement(){
         container.appendChild(input);
 
         return container;
+    }
+
+    function createLabelTextAreaPair(labelText, inputID, inputName, inputValue)
+    {
+        const container = document.createElement('div');
+
+        const label = document.createElement('label');
+        label.setAttribute('for', inputID);
+        label.textContent = (labelText);
+
+        const textArea = document.createElement('textarea');
+        textArea.setAttribute('id', inputID);
+        textArea.setAttribute('name', inputName);
+        textArea.setAttribute('value', inputValue);
+
+        container.appendChild(label);
+        container.appendChild(textArea);
+
+        return container;
+
     }
 
     function createRadioContainer(textDescription, numberOfRadioOptions, radioOptions)

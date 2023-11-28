@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 .navbar{
@@ -11,20 +12,24 @@
     flex-direction: row;
     justify-content: center;
     padding: 1vh 1vw;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;
 }
 
 .body{
     display: flex;
     flex-direction: row;
+    
 }
 .user-input{
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    width: 25vw;
+    height: fit-content;
+    background-color: rgb(61, 92, 192);
     
-    border: 1px solid black;
-    padding: 2vh 1vw;
+    padding: 1vh 1vw 5vh 1vw;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;
 }
 
 .user-input > form{
@@ -36,15 +41,15 @@
 }
 
 .user-input > form > div{
-    padding: 2vh;
+    padding: 1vh;
     display: flex;
     flex-direction: column;
     
 }
 
-.box-input > input{
+.box-input > textarea{
 
-    height: 5vh;
+    height: 8vh;
 
 }
 
@@ -52,8 +57,9 @@
 .todo-container{
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
+
     height: 80vh;
+    background-color: rgb(29, 55, 138);
 }
 
 .todo-card-container{
@@ -64,22 +70,23 @@
 
 .completed{
     width: 18vw;
-    margin: 0vh 0.5vw;
+    margin: 1vh 0.5vw;
     text-align: center;
-    padding-top: 1vh;
-
-    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;   
 }
 
 .not-completed{
     width: 18vw;
-    margin: 0vh 0.5vw;
+    margin: 1vh 0.5vw;
     text-align: center;
-    padding-top: 1vh;
-
-   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;  
 }
 
+.category-header{
+    background-color: black;
+    color: white;
+    padding: 0.5vh 0vw;
+}
 .new-todo-card{
 
     background-color: rgb(255, 255, 255);

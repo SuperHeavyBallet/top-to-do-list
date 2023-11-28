@@ -37,9 +37,11 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
-// add div container for each card item
-//inside container place item description, eg: 'Due:' * item data
+// add div container for each card text item
+//inside container place item description, eg: 'Due:' + item data
 //fix the code that breaks from this
 
  // add completed/not completed checkbox
  // edit card?
+
+ //if priority input == '' > text content = medium
