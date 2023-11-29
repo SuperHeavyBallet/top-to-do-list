@@ -107,43 +107,73 @@
 
 }
 
-.todo-not-completed > h3:first-of-type{
+.todo-completed > div:first-of-type{
 
-    padding: 0.2vh 0vw;
-    background-color: rgb(194, 44, 44);
-    color: white;
-
-}
-
-.todo-completed > h3:first-of-type{
-    
     padding: 0.2vh 0vw;
     background-color: rgb(69, 199, 127);
     color: white;
+
+}
+
+.todo-not-completed > div:first-of-type{
+    
+    padding: 0.2vh 0vw;
+    
+    background-color: rgb(194, 44, 44);
+    color: white;
 }
 
 
 
-.new-todo-card > p:first-of-type{
 
-    padding: 0.5vh 1vw;
 
+
+.card-details{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5vh 0.2vw;
 }
 
-.new-todo-card > h4:first-of-type{
-
-    padding: 0.5vh 1vw;
-
-    margin-bottom: 1vh;
+.card-details > p:first-of-type{
+    padding: 0vw 0.5vw;
 }
 
-.new-todo-card > p:last-of-type{
- 
-    padding: 0.5vh 1vw;
+.card-due-date{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5vh 0.2vw;
+}
 
+.card-due-date > p:first-of-type{
+    padding: 0vw 0.5vw;
+}
 
+.card-notes{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5vh 0.2vw;
+}
+
+.card-notes > p:first-of-type{
+    padding: 0vw 0.5vw;
+}
+
+.card-priority{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5vh 0.2vw;
+}
+
+.card-priority > p:first-of-type{
+    padding: 0vw 0.5vw;
+}
+
+.card-completed{
+    display: none;
 }
 
 .no-display{
     display: none;
 }
+
+

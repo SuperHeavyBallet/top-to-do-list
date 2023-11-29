@@ -34,7 +34,8 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
-
+//PRIORITY
+// REFACTOR TO SOURCE EVERYTHING FROM ORIGINAL OBJECT, REDUCE SPAGHETTI
 
 
 // add div container for each card text item

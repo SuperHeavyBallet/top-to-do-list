@@ -5,8 +5,13 @@ export function sortByPriority(){
     const notCompletedToDoCategory = document.querySelector('.not-completed');
 
     // Creating Arrays from the completed and not completed DOM elements
+
+
     const completedArray = Array.from(document.querySelectorAll('.todo-completed'));
+    
     const notCompletedArray = Array.from(document.querySelectorAll('.todo-not-completed'));
+
+
 
     // Assigning pre-final merged and ordered arrays
     const mergedOrderedCompleteArray = sortingPriorityAndDate(completedArray);
@@ -60,7 +65,7 @@ export function sortByPriority(){
                 }
                 else{
                     //Handle invalid date
-                    console.error('Invalid date for item');
+                    console.log('Invalid date for item');
                 }
             }
             else
