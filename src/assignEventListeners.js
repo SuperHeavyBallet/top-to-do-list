@@ -1,5 +1,4 @@
 import { makeToDoElement } from "./makeToDoElement";
-import { makeNewToDoCard } from "./makeNewToDoCard";
 
 export function assignEventListeners(){
 
@@ -72,7 +71,8 @@ export function assignEventListeners(){
 
         if (toDoNameInputValue != undefined && toDoCompletedInputValue != undefined)
         {
-            makeNewToDoCard(
+              
+            makeToDoElement(
                 toDoNameInputValue,
                 toDoDetailsInputValue,
                 toDoDueDateValue,
@@ -82,6 +82,7 @@ export function assignEventListeners(){
             );
 
             clearInputFields();
+
         }
         else{
             alert("Please fill out the \"ToDo\" and \"Completed\" Fields");
