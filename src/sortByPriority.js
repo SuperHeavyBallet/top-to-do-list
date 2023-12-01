@@ -8,10 +8,10 @@ export function sortByPriority(){
 
 
     const completedArray = Array.from(document.querySelectorAll('.todo-completed'));
-    
+
     const notCompletedArray = Array.from(document.querySelectorAll('.todo-not-completed'));
 
-
+    
 
     // Assigning pre-final merged and ordered arrays
     const mergedOrderedCompleteArray = sortingPriorityAndDate(completedArray);
@@ -51,10 +51,40 @@ export function sortByPriority(){
             }
 
             //Grab the DUE DATE from the DOM element's child node(Date assigned in input)
-            const dueDate  = inputArray[i].childNodes[2].textContent;
+            //const dueDate  = inputArray[i].childNodes[2].textContent;
+
+
+            const childrenElements = inputArray[i].children;
+            let dateElement;
+            let dueDate;
+
+            for (let i = 0; i < childrenElements.length; i++)
+            {
+                if (childrenElements[i].classList.contains('card-due-date'))
+                {
+                    dateElement = childrenElements[i];
+
+                    for (let j = 0; j < dateElement.children.length; j++)
+                    {
+                        if (dateElement.children[j].classList.contains('post-text'))
+                        {
+                            dueDate = dateElement.children[j].textContent;
+                        }
+                        else
+                        {
+                            dueDate = NaN;
+                        }
+                    }
+
+
+                }
+            }
+
+
+            
         
             // Check if valid DUE DATE is provided by the user
-            if (dueDate.trim() !== '')
+            if (!isNaN(dueDate) && dueDate.trim() !== '')
             {
                 const dateObject = new Date(dueDate);
 

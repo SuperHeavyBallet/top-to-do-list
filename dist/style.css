@@ -68,30 +68,36 @@
     
 }
 
-.completed{
-    width: 18vw;
-    margin: 1vh 0.5vw;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;   
-}
 
-.not-completed{
-    width: 18vw;
-    margin: 1vh 0.5vw;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;  
-}
 
 .category-header{
     background-color: black;
     color: white;
     padding: 0.5vh 0vw;
+
+
+    margin: 1vh 0.5vw;
+    text-align: center;
+}
+
+.completed{
+    width: 18vw;
+
+    text-align: center;
+      
+}
+
+.not-completed{
+    width: 18vw;
+
+    text-align: center;
+    
 }
 .new-todo-card{
 
     background-color: rgb(255, 255, 255);
 
-    margin-bottom: 1vh;
+    margin: 1vh 0.5vw;
     text-align:  center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px;
 }
@@ -112,7 +118,7 @@
     flex-direction: column;
     
     align-items: start;
-    padding: 0.5vh 0.5vw;
+    padding: 0.3vh 0.5vw;
 }
 
 .new-todo-card > div:first-child{
@@ -159,12 +165,13 @@
 
 
 
-.card-completed{
-    display: none;
-}
 
 .no-display{
     display: none;
+    height: 0vh;
+    padding: 0;
+    margin: 0;
+
 }
 
 

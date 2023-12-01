@@ -146,11 +146,13 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
       {
         completedCategory.appendChild(newToDoCard);
         titleContainer.classList.add('card-title-completed');
+        newToDoCard.classList.add('todo-completed');
       }
       if (completed === 'no')
       {
         notCompletedCategory.appendChild(newToDoCard);
         titleContainer.classList.add('card-title-not-completed');
+        newToDoCard.classList.add('todo-not-completed');
       }    
 
       const cardElementsAsArray = 
@@ -168,6 +170,35 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
         {
           cardElementsAsArray[i].parentElement.remove();
         }
+      }
+      
+
+
+      if (completed === 'yes')
+      {
+        const preTextClasses = Array.from(document.querySelectorAll('.pre-text'));
+
+        for (let i = 0; i < preTextClasses.length; i++)
+        {
+
+          if (i != 1)
+          {
+            preTextClasses[i].classList.remove('pre-text');
+            preTextClasses[i].classList.add('no-display');
+          }
+          
+        }
+
+        const postTextClasses = Array.from(document.querySelectorAll('.post-text'));
+        for (let i = 0; i < postTextClasses.length; i++)
+        {
+          if (i != 1)
+          {
+            postTextClasses[i].classList.remove('post-text');
+            postTextClasses[i].classList.add('no-display');
+          }
+        }
+        
       }
 
    

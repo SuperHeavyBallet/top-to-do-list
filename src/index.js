@@ -3,6 +3,7 @@ import { makeNavBar } from './makeNavBar';
 import { makeToDoContainer } from './makeToDoContainer';
 import { makeUserInputElement } from './makeUserInputElement';
 import { assignEventListeners } from './assignEventListeners';
+import { makeProjectContainer } from './makeProjectContainer';
 import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
@@ -16,13 +17,20 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
     makeNavBar();
 
+
+
     makeToDoContainer();
+
     
 
     makeUserInputElement();
+
     
 
     assignEventListeners();
+
+
+    makeProjectContainer('default');
 
     makeToDoCardContainer();
 

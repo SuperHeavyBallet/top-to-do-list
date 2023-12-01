@@ -37,9 +37,9 @@ export function makeUserInputElement(){
         //Text Description, Number of Radio Options, Text Content, Id, Name, Type
         const priorityContainer = createRadioContainer('Priority:', 3, [
 
-            ['High', 'todo-priority-high', 'todo-priority', 'radio', 'High'],
-            ['Medium', 'todo-priority-medium', 'todo-priority', 'radio', 'Medium'],
-            ['Low', 'todo-priority-low', 'todo-priority', 'radio', 'Low']
+            ['High', 'todo-priority-high', 'todo-priority', 'radio', 'high'],
+            ['Medium', 'todo-priority-medium', 'todo-priority', 'radio', 'medium'],
+            ['Low', 'todo-priority-low', 'todo-priority', 'radio', 'low']
         ]);
         form.appendChild(priorityContainer);
 
