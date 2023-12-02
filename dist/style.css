@@ -81,14 +81,15 @@
 }
 
 .completed{
-    width: 18vw;
+    width: 10vw;
 
     text-align: center;
+    
       
 }
 
 .not-completed{
-    width: 18vw;
+    width: 10vw;
 
     text-align: center;
     
@@ -103,33 +104,21 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
 .new-todo-card > div{
     display: flex;
     flex-direction: column;
     
     align-items: start;
-    padding: 0.3vh 0.5vw;
+    
 }
 
 .new-todo-card > div:first-child{
     
     align-items: center;
+    margin-bottom: 0.5vh;
 }
 
-.new-todo-card > div:last-child{
-    
-   padding-bottom: 1vh;
-}
+
 
 
 .pre-text{
@@ -147,31 +136,69 @@
 
 .card-title-not-completed{
 
-    padding: 0.5vh 0vw;
+    padding: 0.5vh 1vw;
     background-color: rgb(194, 44, 44);
     color: white;
     justify-content: center;
-    margin-bottom: 1vh;
+
+
+
+    
+    
 
 }
 
+
 .card-title-completed{
-    padding: 0.5vh 0vw;
+    padding: 0.5vh 1vw;
     background-color: rgb(69, 199, 127);
     color: white;
     justify-content: center;
-    margin-bottom: 1vh;
+    
+
+    
 }
 
+.card-title-completed{
+        
+}
+
+.hide-details-button{
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    color: white;
+    font-size: small;
+    padding: 0.6vh 0vh 0.6vh 0vh;
+}
+
+.hide-details-button:hover{
+    cursor: pointer;
+}
+
+.hide-button-not-completed{
+    background-color: rgb(194, 44, 44);
+    margin-top: 0.5vh;
+
+
+}
+
+.hide-button-completed{
+    background-color: rgb(69, 199, 127);
+    margin-top: 0.5vh;
+}
 
 
 
 .no-display{
-    display: none;
-    height: 0vh;
+    visibility: hidden;
+    height: 0;
     padding: 0;
-    margin: 0;
 
+}
+
+.display{
+    padding: 0.3vh 0.5vw;
 }
 
 

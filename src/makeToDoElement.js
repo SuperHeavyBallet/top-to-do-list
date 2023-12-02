@@ -174,7 +174,7 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
       }
 
 
-      createHideDetailsButton(newToDoCard);
+      createHideDetailsButton(newToDoCard, completed);
       
 
 
@@ -188,23 +188,71 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
   
 
-  function createHideDetailsButton(thisCard){
+  function createHideDetailsButton(thisCard, completedStatus){
 
+    const hideDetailsButtonContainer = document.createElement('div');
     const hideDetailsButton = document.createElement('button');
     const toDoCard = thisCard;
 
-    hideDetailsButton.textContent = 'Hide Details';
+    if (completedStatus === 'yes')
+    {
+      hideDetailsButtonContainer.classList.add('hide-button-completed');
+    }
+    else if (completedStatus === 'no')
+    {
+      hideDetailsButtonContainer.classList.add('hide-button-not-completed');
+    }
 
-    thisCard.appendChild(hideDetailsButton);
+    hideDetailsButton.textContent = 'Hide Details';
+    hideDetailsButton.classList.add('hide-details-button');
+
+    hideDetailsButtonContainer.appendChild(hideDetailsButton);
+    thisCard.appendChild(hideDetailsButtonContainer);
+
+    
 
     hideDetailsButton.addEventListener('click', () =>{
+
+
+      const childrenOfThisCard = toDoCard.children;
+      console.log(childrenOfThisCard);
+      const childrenOfChildren = [];
+
       if (hideDetailsButton.textContent === 'Hide Details')
       {
+
         hideDetailsButton.textContent = 'Show Details';
+
+        for (let i = 1; i < childrenOfThisCard.length -1; i++)
+        {
+
+          
+          
+          for (let j = 0; j < childrenOfThisCard[i].children.length; j++)
+          {
+            childrenOfChildren.push(childrenOfThisCard[i].children[j]);
+            childrenOfChildren.push(childrenOfThisCard[i].children[j].classList.remove('display'));
+            childrenOfChildren.push(childrenOfThisCard[i].children[j].classList.add('no-display'));
+          }
+        }
+
       }
       else if (hideDetailsButton.textContent === 'Show Details')
       {
+
         hideDetailsButton.textContent = 'Hide Details';
+
+        for (let i = 1; i < childrenOfThisCard.length -1; i++)
+        {
+          
+
+          for (let j = 0; j < childrenOfThisCard[i].children.length; j++)
+          {
+            childrenOfChildren.push(childrenOfThisCard[i].children[j]);
+            childrenOfChildren.push(childrenOfThisCard[i].children[j].classList.remove('no-display'));
+            childrenOfChildren.push(childrenOfThisCard[i].children[j].classList.add('display'));
+          }
+        }
       }
     })
 

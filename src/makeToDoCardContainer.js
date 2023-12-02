@@ -1,7 +1,8 @@
-export function makeToDoCardContainer(){
+export function makeToDoCardContainer(inputProject){
 
-    const projectContainer = document.querySelector('.project-container');
-
+    
+    const projectContainer = document.querySelector("#" + inputProject);
+    console.log(projectContainer);
     //////////////
     const toDoCardContainer = document.createElement('div');
     toDoCardContainer.classList.add('todo-card-container');

@@ -15,6 +15,7 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
+
     makeNavBar();
 
 
@@ -30,9 +31,10 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
     assignEventListeners();
 
 
-    makeProjectContainer('default');
+    makeProjectContainer('Default Project');
+  
 
-    makeToDoCardContainer();
+ 
 
 
 

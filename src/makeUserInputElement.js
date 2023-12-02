@@ -8,9 +8,34 @@ export function makeUserInputElement(){
     userInput.classList.add('user-input');
     toDoContainer.appendChild(userInput);
 
+    const newProjectForm = createProject();
+    userInput.appendChild(newProjectForm);
 
     const toDoForm = createForm();
     userInput.appendChild(toDoForm);
+
+    //Creates the New Project Form
+    function createProject()
+    {
+        const projectForm = document.createElement('form');
+
+        //Text input Elements
+        const projectName = (createLabelInputPair('Add New Project:', 'project-name', 'project-name', 'text', ''));
+
+        projectForm.appendChild(projectName);
+
+        //Creates the final submit button for this form
+        
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'button');
+        submitButton.setAttribute('value', 'Create New Project');
+        submitButton.textContent = "Submit New Project";
+        submitButton.setAttribute('id', 'submit-new-project');
+        submitButton.classList.add('submit-button');
+        projectForm.appendChild(submitButton);
+
+        return projectForm;
+    }
 
 
     //Creates The Entire Form Section
@@ -56,6 +81,7 @@ export function makeUserInputElement(){
         submitButton.setAttribute('value', 'Create New To Do');
         submitButton.textContent = "Submit New To Do";
         submitButton.setAttribute('id', 'submit-new-todo');
+        submitButton.classList.add('submit-button');
         form.appendChild(submitButton);
 
 

@@ -1,6 +1,9 @@
 import { makeToDoElement } from "./makeToDoElement";
+import { makeProjectContainer } from "./makeProjectContainer";
 
 export function assignEventListeners(){
+
+    let newProjectInputValue;
 
     let toDoNameInputValue;
     let toDoDetailsInputValue;
@@ -11,10 +14,60 @@ export function assignEventListeners(){
 
     clearInputFields();
 
+    //
+
+    const newProjectInput = document.querySelector('#project-name');
+    newProjectInput.addEventListener('input', function(event)
+    {
+        newProjectInputValue = event.target.value;
+    });
+
+    const submitProjectButton = document.querySelector('#submit-new-project');
+    submitProjectButton.addEventListener('click', () => {
+
+        
+
+        if (newProjectInputValue != undefined)
+        {
+            const existingProjects = document.querySelectorAll(".project-container")
+
+        for (let i = 0; i <existingProjects.length; i++)
+        {
+            const projectNameAsLowerString = newProjectInputValue.toLowerCase();
+            const projectNameWithoutSpaces = projectNameAsLowerString.replaceAll(" ", "");
+
+
+            if (document.getElementById(projectNameWithoutSpaces))
+            {
+                alert("Please Choose A Different Project Name");
+                break;
+            }
+
+            else
+            {
+                console.log("Clicked Submit New Project");
+                makeProjectContainer(newProjectInputValue);
+                clearInputFields();
+                break;
+            }
+        }
+        }
+
+        else{
+            alert("Please fill out the \"Add New Project\" Field");
+        }
+
+        
+        
+
+        
+
+    });
+
 
     
 
-
+    //
     const toDoNameInput = document.querySelector('#todo-name');
     toDoNameInput.addEventListener('input', function(event) {
 
@@ -64,8 +117,8 @@ export function assignEventListeners(){
     });
 
 
-    const submitButton = document.querySelector('#submit-new-todo');
-    submitButton.addEventListener('click', () => {
+    const submitToDoButton = document.querySelector('#submit-new-todo');
+    submitToDoButton.addEventListener('click', () => {
 
         
 
@@ -98,8 +151,13 @@ export function assignEventListeners(){
     function clearInputFields()
     {
         //Reset Input Field Values
-        const form = document.querySelector('form');
-        form.reset();
+        const forms = document.querySelectorAll('form');
+
+        for (let i = 0;  i < forms.length; i++)
+        {
+            forms[i].reset();
+        }
+
 
         toDoNameInputValue = undefined;
         toDoDetailsInputValue = undefined;
