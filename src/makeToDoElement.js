@@ -20,6 +20,7 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
   
 
   createNewCard();
+  
 
 
   function createNewCard()
@@ -171,35 +172,13 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
           cardElementsAsArray[i].parentElement.remove();
         }
       }
+
+
+      createHideDetailsButton(newToDoCard);
       
 
 
-      if (completed === 'yes')
-      {
-        const preTextClasses = Array.from(document.querySelectorAll('.pre-text'));
-
-        for (let i = 0; i < preTextClasses.length; i++)
-        {
-
-          if (i != 1)
-          {
-            preTextClasses[i].classList.remove('pre-text');
-            preTextClasses[i].classList.add('no-display');
-          }
-          
-        }
-
-        const postTextClasses = Array.from(document.querySelectorAll('.post-text'));
-        for (let i = 0; i < postTextClasses.length; i++)
-        {
-          if (i != 1)
-          {
-            postTextClasses[i].classList.remove('post-text');
-            postTextClasses[i].classList.add('no-display');
-          }
-        }
-        
-      }
+     
 
    
 
@@ -209,7 +188,27 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
   
 
-  //
+  function createHideDetailsButton(thisCard){
+
+    const hideDetailsButton = document.createElement('button');
+    const toDoCard = thisCard;
+
+    hideDetailsButton.textContent = 'Hide Details';
+
+    thisCard.appendChild(hideDetailsButton);
+
+    hideDetailsButton.addEventListener('click', () =>{
+      if (hideDetailsButton.textContent === 'Hide Details')
+      {
+        hideDetailsButton.textContent = 'Show Details';
+      }
+      else if (hideDetailsButton.textContent === 'Show Details')
+      {
+        hideDetailsButton.textContent = 'Hide Details';
+      }
+    })
+
+  }
   
   
   
