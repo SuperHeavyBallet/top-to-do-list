@@ -1,4 +1,5 @@
 import { makeToDoCardContainer } from "./makeToDoCardContainer";
+import { makeProjectSelector } from "./makeProjectSelector";
 
 export function makeProjectContainer(projectName)
 {
@@ -11,7 +12,7 @@ export function makeProjectContainer(projectName)
     const projectNameAsLowerString = projectName.toLowerCase();
     const projectNameWithoutSpaces = projectNameAsLowerString.replaceAll(" ", "");
     newProject.setAttribute('id', projectNameWithoutSpaces);
-    
+
     const newProjectTitle = document.createElement('div');
     newProjectTitle.textContent = projectName;
     newProjectTitle.classList.add('category-header');
@@ -19,10 +20,11 @@ export function makeProjectContainer(projectName)
     newProject.appendChild(newProjectTitle);
     todoCardContainer.appendChild(newProject);
 
+
+
     makeToDoCardContainer(projectNameWithoutSpaces);
 
-
-
+    
 
     
 

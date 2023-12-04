@@ -1,5 +1,6 @@
 import { makeToDoElement } from "./makeToDoElement";
 import { makeProjectContainer } from "./makeProjectContainer";
+import { makeProjectSelector } from "./makeProjectSelector";
 
 export function assignEventListeners(){
 
@@ -45,8 +46,11 @@ export function assignEventListeners(){
 
             else
             {
+
+                const newToDoForm = document.querySelector('.new-todo-form');
                 console.log("Clicked Submit New Project");
                 makeProjectContainer(newProjectInputValue);
+                makeProjectSelector();
                 clearInputFields();
                 break;
             }

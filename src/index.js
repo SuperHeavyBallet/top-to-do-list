@@ -31,7 +31,7 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
     assignEventListeners();
 
 
-    makeProjectContainer('Default Project');
+    
   
 
  

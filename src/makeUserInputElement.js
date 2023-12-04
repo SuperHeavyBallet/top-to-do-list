@@ -1,3 +1,6 @@
+import { makeProjectContainer } from "./makeProjectContainer";
+import { makeProjectSelector } from "./makeProjectSelector";
+
 export function makeUserInputElement(){
 
     
@@ -12,7 +15,9 @@ export function makeUserInputElement(){
     userInput.appendChild(newProjectForm);
 
     const toDoForm = createForm();
+    toDoForm.classList.add('new-todo-form');
     userInput.appendChild(toDoForm);
+
 
     //Creates the New Project Form
     function createProject()
@@ -33,6 +38,8 @@ export function makeUserInputElement(){
         submitButton.setAttribute('id', 'submit-new-project');
         submitButton.classList.add('submit-button');
         projectForm.appendChild(submitButton);
+
+        
 
         return projectForm;
     }
@@ -74,6 +81,33 @@ export function makeUserInputElement(){
             ['No', 'todo-completed-no', 'todo-completed', 'radio', 'no']
         ]);
         form.appendChild(completedContainer);
+
+        makeFirstProjectSelector();
+
+        function makeFirstProjectSelector()
+        {
+            const projectSelectContainer = document.createElement('div');
+            projectSelectContainer.classList.add('project-select-container');
+            
+
+            const projectSelect = document.createElement('select');
+            projectSelect.setAttribute('id', 'project-select');
+            projectSelect.setAttribute('name', 'project-select');
+
+            const projectSelectText = document.createElement('label');
+            projectSelectText.setAttribute('for', 'project-select');
+            projectSelectText.textContent = ("Add To Which Project?");
+
+            projectSelectContainer.appendChild(projectSelectText);
+            projectSelectContainer.appendChild(projectSelect);
+            form.appendChild(projectSelectContainer);
+
+        }
+        makeProjectContainer('Default Project');
+
+        
+
+        
 
         //Creates the final submit button for this form
         const submitButton = document.createElement('button');
@@ -150,6 +184,33 @@ export function makeUserInputElement(){
 
 
     }
+    /*
+    function makeProjectSelector(form)
+        {
+            //Creates the choice of project to assign ToDo to
+            
+
+            const projectSelectContainer = document.createElement('div');
+            const projectSelect = document.createElement('select');
+            projectSelect.setAttribute('id', 'project-select');
+            projectSelect.setAttribute('name', 'project-select');
+
+            const existingProjects = document.querySelectorAll('project-container');
+            console.log(existingProjects);
+            for (let i = 0; i < existingProjects.length; i++)
+            {
+                const projectSelectOption = document.createElement('option');
+                projectSelectOption.textContent = existingProjects[i].getAttribute('id');
+                projectSelect.setAttribute('value', projectSelectOption[i].getAttribute('id'));
+                projectSelect.appendChild(projectSelectOption);
+                console.log(projectSelectOption);
+            }
+
+            projectSelectContainer.appendChild(projectSelect);
+            form.appendChild(projectSelectContainer);
+        }
+
+    */
 
 
 
