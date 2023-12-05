@@ -1,6 +1,6 @@
 import { sortByPriority } from "./sortByPriority";
 
-export function makeToDoElement(name, details, dueDate, notes, priority, completed) {
+export function makeToDoElement(name, details, dueDate, notes, priority, completed, project) {
 
     class toDoElement {
 
@@ -11,17 +11,103 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
             this.notes = notes;
             this.priority = priority;
             this.completed = completed;
+            this.project = project;
         }
   }
 
-  const completedCategory = document.querySelector('.completed');
-  const notCompletedCategory = document.querySelector('.not-completed');
+  const projectToAssignTo = getSelectedProject();
+  
+
+  const completedCategory = getCompletedCategory();
+  const notCompletedCategory = getNotCompletedCategory();
+
+  console.log(completedCategory);
+  console.log(notCompletedCategory);
 
   
 
   createNewCard();
   
+  function getSelectedProject()
+  {
+    const defaultproject = document.querySelector('#defaultproject');
 
+    const allProjects = Array.from(document.querySelectorAll('.project-container'));
+    let selectedProject;
+
+    for (let i = 0; i < allProjects.length; i++)
+    {
+      if (allProjects[i].id === project)
+      {
+        selectedProject = allProjects[i];
+        break;
+      }
+      else
+      {
+        selectedProject = defaultproject;
+        
+      }
+
+    }
+
+    
+
+    console.log (allProjects);
+    console.log(selectedProject);
+    return selectedProject;
+      
+  }
+
+  function getCompletedCategory()
+  {
+    const completedCategories = Array.from(document.querySelectorAll('.completed'));
+    let selectedCompletedCategory;
+    
+
+    for (let i = 0; i < completedCategories.length; i++)
+    {
+      let parentOfCompletedCategory = completedCategories[i].parentElement;
+
+      if (parentOfCompletedCategory.parentElement.id === project)
+      {
+        selectedCompletedCategory = completedCategories[i];
+        break; 
+      }
+      else
+      {
+        selectedCompletedCategory = completedCategories[0];
+      }
+    }
+
+    return selectedCompletedCategory;
+
+    
+  }
+
+  function getNotCompletedCategory()
+  {
+    const notCompletedCategories = Array.from(document.querySelectorAll('.not-completed'));
+    let selectedNotCompletedCategory;
+
+
+    for (let i = 0; i < notCompletedCategories.length; i++)
+    {
+      let parentOfNotCompletedCategory = notCompletedCategories[i].parentElement;
+
+      if (parentOfNotCompletedCategory.parentElement.id === project)
+      {
+        selectedNotCompletedCategory = notCompletedCategories[i];
+        break; 
+      }
+      else
+      {
+        selectedNotCompletedCategory = notCompletedCategories[0];
+      }
+    }
+
+    return selectedNotCompletedCategory;
+
+  }
 
   function createNewCard()
   {
@@ -264,7 +350,7 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
 
 
-  sortByPriority();
+  //sortByPriority();
 
     
   }

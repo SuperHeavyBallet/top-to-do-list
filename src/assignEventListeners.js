@@ -11,6 +11,7 @@ export function assignEventListeners(){
     let toDoDueDateValue;
     let toDoNotesInputValue;
     let toDoPriorityInputValue;
+    let toDoSelectedProjectInputValue
     let toDoCompletedInputValue;
 
     clearInputFields();
@@ -120,6 +121,23 @@ export function assignEventListeners(){
     })
     });
 
+    
+    const toDoProjectAssignInput = document.querySelectorAll('select[name="project-select"]');
+    toDoProjectAssignInput.forEach(function (selectInput){
+        selectInput.addEventListener('change', function(event){
+
+            let selectedProject = event.target.value;
+
+            if (selectedProject)
+            {
+                toDoSelectedProjectInputValue = selectedProject;
+                console.log(toDoSelectedProjectInputValue);
+            }
+
+
+        })
+    })
+
 
     const submitToDoButton = document.querySelector('#submit-new-todo');
     submitToDoButton.addEventListener('click', () => {
@@ -135,7 +153,8 @@ export function assignEventListeners(){
                 toDoDueDateValue,
                 toDoNotesInputValue,
                 toDoPriorityInputValue,
-                toDoCompletedInputValue
+                toDoCompletedInputValue,
+                toDoSelectedProjectInputValue
             );
 
             clearInputFields();
@@ -168,6 +187,7 @@ export function assignEventListeners(){
         toDoDueDateValue = undefined;
         toDoNotesInputValue = undefined;
         toDoPriorityInputValue = undefined;
+        toDoSelectedProjectInputValue = undefined;
         toDoCompletedInputValue = undefined;
 
     }

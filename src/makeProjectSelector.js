@@ -25,7 +25,11 @@ export function makeProjectSelector()
         const projectSelectOption = document.createElement('option');
                     
         projectSelectOption.textContent = existingProjects[i].children[0].textContent;
-                    
+        const projectNameAsLowerString = existingProjects[i].children[0].textContent.toLowerCase();
+        const projectNameWithoutSpaces = projectNameAsLowerString.replaceAll(" ", "");
+        
+        projectSelectOption.setAttribute('value', projectNameWithoutSpaces);
+
         projectSelect.appendChild(projectSelectOption);
                     
     }
