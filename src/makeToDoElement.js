@@ -350,7 +350,7 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
 
 
-  //sortByPriority();
+  sortByPriority(completedCategory, notCompletedCategory, project);
 
     
   }

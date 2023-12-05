@@ -1,15 +1,15 @@
-export function sortByPriority(){
+export function sortByPriority(completedCategory, notCompletedCategory, project){
 
     // Initial DOM elements assigning
-    const completedToDoCategory = document.querySelector('.completed');
-    const notCompletedToDoCategory = document.querySelector('.not-completed');
+    const completedToDoCategory = completedCategory;
+    const notCompletedToDoCategory = notCompletedCategory;
 
     // Creating Arrays from the completed and not completed DOM elements
 
 
-    const completedArray = Array.from(document.querySelectorAll('.todo-completed'));
+    const completedArray = getCompletedCategory();
 
-    const notCompletedArray = Array.from(document.querySelectorAll('.todo-not-completed'));
+    const notCompletedArray = getCompletedCategory();
 
     
 
@@ -137,6 +137,57 @@ export function sortByPriority(){
         //Handle VALID date entry
         return a.dateObject - b.dateObject;
     }
+
+    function getCompletedCategory()
+  {
+    const completedCategories = Array.from(document.querySelectorAll('.completed'));
+    let selectedCompletedCategory;
+    
+
+    for (let i = 0; i < completedCategories.length; i++)
+    {
+      let parentOfCompletedCategory = completedCategories[i].parentElement;
+
+      if (parentOfCompletedCategory.parentElement.id === project)
+      {
+        selectedCompletedCategory = completedCategories[i];
+        break; 
+      }
+      else
+      {
+        selectedCompletedCategory = completedCategories[0];
+      }
+    }
+
+    return selectedCompletedCategory;
+
+    
+  }
+
+  function getNotCompletedCategory()
+  {
+    const notCompletedCategories = Array.from(document.querySelectorAll('.not-completed'));
+    let selectedNotCompletedCategory;
+
+
+    for (let i = 0; i < notCompletedCategories.length; i++)
+    {
+      let parentOfNotCompletedCategory = notCompletedCategories[i].parentElement;
+
+      if (parentOfNotCompletedCategory.parentElement.id === project)
+      {
+        selectedNotCompletedCategory = notCompletedCategories[i];
+        break; 
+      }
+      else
+      {
+        selectedNotCompletedCategory = notCompletedCategories[0];
+      }
+    }
+
+    return selectedNotCompletedCategory;
+
+  }
 
 
 
