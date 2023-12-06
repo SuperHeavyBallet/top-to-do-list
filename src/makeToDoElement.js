@@ -292,6 +292,8 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
     hideDetailsButton.classList.add('hide-details-button');
 
     hideDetailsButtonContainer.appendChild(hideDetailsButton);
+
+
     thisCard.appendChild(hideDetailsButtonContainer);
 
     
@@ -299,8 +301,8 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
     hideDetailsButton.addEventListener('click', () =>{
 
 
+      
       const childrenOfThisCard = toDoCard.children;
-      console.log(childrenOfThisCard);
       const childrenOfChildren = [];
 
       if (hideDetailsButton.textContent === 'Hide Details')
@@ -341,6 +343,11 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
       }
     });
 
+  }
+
+  function hideShowButton()
+  {
+    
   }
 
   function createDeleteToDoButton(thisCard, titleContainer)
