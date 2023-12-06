@@ -1,15 +1,12 @@
 export function sortByPriority(completedCategory, notCompletedCategory, project){
 
-    console.log (completedCategory);
 
     // Creating Arrays from the completed and not completed DOM elements
 
+    const completedArray = Array.from(completedCategory.children);
+    const notCompletedArray = Array.from(notCompletedCategory.children);
 
-    const completedArray = getCompletedCategory();
 
-    console.log(completedArray);
-
-    const notCompletedArray = getNotCompletedCategory();
 
     
 
@@ -22,100 +19,122 @@ export function sortByPriority(completedCategory, notCompletedCategory, project)
 
 
     //Finally re-append the newly sorted to-do cards to the DOM, updating based on order
-    mergedOrderedCompleteArray.forEach(item => completedToDoCategory.appendChild(item));
-    mergedOrderedNotCompleteArray.forEach(item => notCompletedToDoCategory.appendChild(item));
+    mergedOrderedCompleteArray.forEach(item => completedCategory.appendChild(item));
+    mergedOrderedNotCompleteArray.forEach(item => notCompletedCategory.appendChild(item));
 
 
 
-    function sortingPriorityAndDate(inputArray)
+function sortingPriorityAndDate(inputArray)
+{
+
+    // Create temporary Arrays for each priority
+    const tempHighPriorityArray = [];
+    const tempMedPriorityArray = [];
+    const tempLowPriorityArray = [];
+
+    // Check if each element in the input array (Existing to-do cards in the DOM)
+    // contain a priority of HIGH or LOW, if not sort as MEDIUM
+    for (let i = 1; i <inputArray.length; i++)
     {
-
-        // Create temporary Arrays for each priority
-        const tempHighPriorityArray = [];
-        const tempMedPriorityArray = [];
-        const tempLowPriorityArray = [];
-
-        // Check if each element in the input array (Existing to-do cards in the DOM)
-        // contain a priority of HIGH or LOW, if not sort as MEDIUM
-        for (let i = 0; i <inputArray.length; i++)
+        if (inputArray[i].classList.contains('priority-high'))
         {
-            if (inputArray[i].classList.contains('priority-high'))
-            {
-                tempHighPriorityArray.push(inputArray[i]);
-            }
-            else if (inputArray[i].classList.contains('priority-low'))
-            {
-                tempLowPriorityArray.push(inputArray[i]);
-            }
-            else
-            {
-                tempMedPriorityArray.push(inputArray[i]);
-            }
-
-            //Grab the DUE DATE from the DOM element's child node(Date assigned in input)
-            //const dueDate  = inputArray[i].childNodes[2].textContent;
-
-
-            const childrenElements = inputArray[i].children;
-            let dateElement;
-            let dueDate;
-
-            for (let i = 0; i < childrenElements.length; i++)
-            {
-                if (childrenElements[i].classList.contains('card-due-date'))
-                {
-                    dateElement = childrenElements[i];
-
-                    for (let j = 0; j < dateElement.children.length; j++)
-                    {
-                        if (dateElement.children[j].classList.contains('post-text'))
-                        {
-                            dueDate = dateElement.children[j].textContent;
-                        }
-                        else
-                        {
-                            dueDate = NaN;
-                        }
-                    }
-
-
-                }
-            }
-
-
-            
-        
-            // Check if valid DUE DATE is provided by the user
-            if (!isNaN(dueDate) && dueDate.trim() !== '')
-            {
-                const dateObject = new Date(dueDate);
-
-                if (!isNaN(dateObject))
-                {
-                    //Handle valid date
-                    inputArray[i].dateObject = dateObject;
-                }
-                else{
-                    //Handle invalid date
-                    console.log('Invalid date for item');
-                }
-            }
-            else
-            {
-                // No due date provided
-                inputArray[i].dateObject = null;
-            }
+            tempHighPriorityArray.push(inputArray[i]);
+        }
+        else if (inputArray[i].classList.contains('priority-low'))
+        {
+            tempLowPriorityArray.push(inputArray[i]);
+        }
+        else
+        {
+            tempMedPriorityArray.push(inputArray[i]);
         }
 
-        // Sort each of the Priority Arrays By Date
-        tempHighPriorityArray.sort((a,b) => sortByDate(a,b));
-        tempMedPriorityArray.sort((a,b) => sortByDate(a,b));
-        tempLowPriorityArray.sort((a,b) => sortByDate(a,b));
+        console.log('High', tempHighPriorityArray);
+        console.log('Med', tempMedPriorityArray);
+        console.log('Low', tempLowPriorityArray);
 
-        // Return a merged array of the fully sorted 3 arrays
-        return [...tempHighPriorityArray, ...tempMedPriorityArray, ...tempLowPriorityArray];
+        //Grab the DUE DATE from the DOM element's child node(Date assigned in input)
+
+
+        const childrenElements = inputArray[i].children;
+        let dateElement;
+        let dueDate;
+
+
+
+        for (let i = 1; i < childrenElements.length; i++)
+        {
+            if (childrenElements[i].classList.contains('card-due-date'))
+            {
+                dateElement = childrenElements[i];
+                console.log('Date El' , dateElement);
+
+                for (let j = 0; j < dateElement.children.length; j++)
+                {
+                    if (dateElement.children[j].classList.contains('post-text'))
+                    {
+                        dueDate = dateElement.children[j].textContent;
+                        console.log('due', dueDate);
+                        break;
+                        
+                    }
+                    
+                }
+
+                break;
+
+            }
+            else
+            {
+                dueDate = undefined;
+                        
+            }
+
+            
+        }
+
+
+        if (dueDate === undefined)
+        {
+
+            console.log("Invalid Date");
+            
+        }
+        else
+        {
+            const newDate = new Date(dueDate);
+            console.log('Date' , newDate);
+            inputArray[i].dateObject = newDate;
+            console.log(typeof(inputArray[i]));
+            console.log(inputArray[i]);
+
+
+
+        }
+
+
+
 
     }
+
+
+
+        console.log(tempMedPriorityArray);
+
+    
+
+    // Sort each of the Priority Arrays By Date
+    tempHighPriorityArray.sort((a,b) => sortByDate(a,b));
+    tempMedPriorityArray.sort((a,b) => sortByDate(a,b));
+    tempLowPriorityArray.sort((a,b) => sortByDate(a,b));
+
+    // Return a merged array of the fully sorted 3 arrays
+    return [...tempHighPriorityArray, ...tempMedPriorityArray, ...tempLowPriorityArray];
+
+}
+
+
+
 
     // Function to sort by Date
     function sortByDate(a,b){
@@ -139,6 +158,9 @@ export function sortByPriority(completedCategory, notCompletedCategory, project)
         //Handle VALID date entry
         return a.dateObject - b.dateObject;
     }
+
+
+
 
     function getCompletedCategory()
   {
