@@ -21,8 +21,6 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
   const completedCategory = getCompletedCategory();
   const notCompletedCategory = getNotCompletedCategory();
 
-  console.log(completedCategory);
-  console.log(notCompletedCategory);
 
   
 
@@ -52,8 +50,8 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
     
 
-    console.log (allProjects);
-    console.log(selectedProject);
+    //console.log (allProjects);
+    //console.log(selectedProject);
     return selectedProject;
       
   }
@@ -261,6 +259,7 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
 
 
       createHideDetailsButton(newToDoCard, completed);
+      createDeleteToDoButton(newToDoCard, titleContainer);
       
 
 
@@ -340,8 +339,25 @@ export function makeToDoElement(name, details, dueDate, notes, priority, complet
           }
         }
       }
-    })
+    });
 
+  }
+
+  function createDeleteToDoButton(thisCard, titleContainer)
+  {
+    const deleteButtonContainer = document.createElement('div');
+    const deleteButton = document.createElement('button')
+    const toDoCard = thisCard;
+    deleteButton.textContent = 'X';
+
+    deleteButtonContainer.appendChild(deleteButton);
+    titleContainer.appendChild(deleteButtonContainer);
+
+    deleteButton.addEventListener('click', () => 
+    {
+      thisCard.remove();
+      sortByPriority(completedCategory, notCompletedCategory, project);
+    });
   }
   
   

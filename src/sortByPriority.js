@@ -1,15 +1,17 @@
 export function sortByPriority(completedCategory, notCompletedCategory, project){
 
-    // Initial DOM elements assigning
-    const completedToDoCategory = completedCategory;
-    const notCompletedToDoCategory = notCompletedCategory;
+    console.log (completedCategory);
 
     // Creating Arrays from the completed and not completed DOM elements
 
 
     const completedArray = getCompletedCategory();
 
-    const notCompletedArray = getCompletedCategory();
+    console.log(completedArray);
+
+    const notCompletedArray = getNotCompletedCategory();
+
+    
 
     
 
