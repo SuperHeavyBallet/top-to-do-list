@@ -5,6 +5,7 @@ import { makeUserInputElement } from './makeUserInputElement';
 import { assignEventListeners } from './assignEventListeners';
 import { makeProjectContainer } from './makeProjectContainer';
 import { makeToDoCardContainer } from './makeToDoCardContainer';
+import { storageAvailable } from './localStorage';
 
 
 
@@ -15,7 +16,15 @@ import { makeToDoCardContainer } from './makeToDoCardContainer';
 
 
 
-
+    if (storageAvailable("localStorage"))
+    {
+        console.log("Yippee! We can use localStorage");
+    }
+    else
+    {
+        console.log("Too bad, no localStorage for us");
+    }
+    
     makeNavBar();
 
 
